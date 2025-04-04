@@ -372,7 +372,7 @@ export const getAllChannels = async (req, res) => {
   }
 }
 
-/**
+/**`
  * @desc Get Channel By Id
  * @access Private (Only users can create a channel)
  */
@@ -400,3 +400,4 @@ export const getChannelById = async (req, res) => {
     });
   }
 }
+

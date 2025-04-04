@@ -43,4 +43,5 @@ router.delete("/delete/:channelId", isUserAuthenticated, deleteChannel);
 router.get("/channel", isUserAuthenticated, getAllChannels);
 router.get("/channel/:channelId", isUserAuthenticated, getChannelById);
 
+
 export default router;
