@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import Channel from "../models/channel.model.js";
 import cloudinary from "../config/cloudinary.js";
 import bcrypt from "bcryptjs";
-import fs from "fs";
+
 
 export const uploadProfilePicture = async (req, res) => {
   try {
@@ -65,14 +65,14 @@ export const updateUserProfile = async (req, res) => {
     const user = await User.findById(userId);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({success:false, message: "User not found" });
     }
 
     // check if the username is already taken by another user
     if (username && username !== user.username) {
       const existingUser = await User.findOne({ username });
       if (existingUser) {
-        return res.status(400).json({ message: "Username already taken" });
+        return res.status(400).json({success:false, message: "Username already taken" });
       }
     }
 
@@ -80,7 +80,7 @@ export const updateUserProfile = async (req, res) => {
     if (phoneNumber && phoneNumber !== user.phoneNumber) {
       const existingUser = await User.findOne({ phoneNumber });
       if (existingUser) {
-        return res.status(400).json({ message: "Phone number already taken" });
+        return res.status(400).json({success:false, message: "Phone number already taken" });
       }
     }
 
@@ -101,6 +101,7 @@ export const updateUserProfile = async (req, res) => {
     await user.save();
 
     return res.status(200).json({
+      success:true,
       message: "Profile updated successfully",
       user: {
         firstName: user.firstName,
@@ -112,7 +113,7 @@ export const updateUserProfile = async (req, res) => {
   } catch (error) {
     return res
       .status(500)
-      .json({ message: "Internal server error", error: error.message });
+      .json({success:false, message: "Internal server error", error: error.message });
   }
 };
 

@@ -6,7 +6,9 @@ import dotenv from 'dotenv';
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
+import videoRoutes from "./routes/video.routes.js";
 
+// Load environment variables from.env file
 dotenv.config();
 
 const app = express();
@@ -36,3 +38,4 @@ app.listen(port, () => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/video", videoRoutes);

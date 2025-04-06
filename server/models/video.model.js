@@ -29,12 +29,10 @@ const videoSchema = new mongoose.Schema(
     },
     duration: {
       type: Number,
-      required: true,
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
-      required: true,
     },
     tags: [String],
     uploader: {
@@ -64,11 +62,11 @@ const videoSchema = new mongoose.Schema(
         ref: "Comment",
       },
     ],
-    status: {
-      type: String,
-      enum: ["pending", "approved", "rejected"],
-      default: "pending",
-    },
+    // status: {
+    //   type: String,
+    //   enum: ["pending", "approved", "rejected"],
+    //   default: "pending",
+    // },
   },
   {
     timestamps: true,

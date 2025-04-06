@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Editing - YouTube Clone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <!-- <header class="header">
+    <div class="logo">YouTube Clone</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+    </nav>
+    <div class="profile-avatar">
+      <img src="avatar-placeholder.png" alt="User Avatar" class="avatar-img">
+    </div>
+  </header> -->
+
+  <!-- Profile Section -->
+  <div class="profile-section">
+    <div class="profile-info">
+        <div class="profile-avatar">
+            <img src="./girl.webp" alt="User Avatar" class="avatar-img">
+          </div>
+
+      <div class="username">
+         <h1>Hema Creater</h1>
+         <br> 
+         <!-- <p>@hemakrisp</p> -->
+        <button class="edit-btn" onclick="editUsername()">✏️</button>
+      </div>
+      <div class="bio">
+        <textarea id="bio" placeholder="Write something about yourself...">This is my bio.</textarea>
+      </div>
+      <div class="avatar-upload">
+        <label for="avatar-upload" class="avatar-label"><button class="edit-btn2">Change Profile Picture</button></label>
+        <input type="file" id="avatar-upload" class="file-input">
+      </div>
+    </div>
+    
+    <!-- Video Management Section -->
+    <!-- <div class="video-management">
+      <h2>Manage Your Videos</h2>
+      <div class="video-list">
+        <div class="video-card">
+          <img src="thumbnail1.jpg" alt="Video Thumbnail" class="video-thumbnail">
+          <div class="video-info">
+            <h3>Video Title</h3>
+            <button class="edit-video-btn">Edit</button>
+            <button class="delete-video-btn">Delete</button>
+            <button class="view-video-btn">View</button>
+            <button class="publish-video-btn">Publish</button>
+          </div>
+        </div>
+         Repeat video card for each video 
+      </div>
+    </div> -->
+    
+    <!-- Save and Cancel Buttons -->
+    <div class="buttons">
+      <button class="save-btn">Save Changes</button>
+      <button class="cancel-btn" onclick="cancelChanges()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    function editUsername() {
+      const newUsername = prompt("Enter your new username:", "John Doe");
+      if (newUsername) {
+        document.querySelector('.username h1').textContent = newUsername;
+      }
+    }
+
+    function cancelChanges() {
+      document.getElementById('bio').value = "This is my bio.";
+    }
+  </script>
+
+</body>
+</html>
