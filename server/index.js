@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
 import videoRoutes from "./routes/video.routes.js";
+import commentRoutes from "./routes/comment.routes.js";
 
 // Load environment variables from.env file
 dotenv.config();
@@ -19,9 +20,9 @@ app.use(cors({
   origin: 'http://localhost:5173', // Your React app's URL
   credentials: true
 }));
-app.use(express.json());
+app.use(express.json({ limit: "1gb" }));
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({limit: "1gb", extended: true }));
 
 // Database connection
 connectDB();
@@ -31,11 +32,13 @@ app.get('/', (req, res) => {
   res.send('YouTube Clone API is running');
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/video", videoRoutes);
+app.use("/api/v1/comment", commentRoutes);
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+

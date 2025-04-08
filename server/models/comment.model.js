@@ -5,12 +5,10 @@ const commentSchema = new mongoose.Schema(
     videoId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Video",
-      required: true,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
     },
     text: {
       type: String,
@@ -22,12 +20,12 @@ const commentSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
-    dislikes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    // dislikes: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User",
+    //   },
+    // ],
     replies: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -40,4 +38,6 @@ const commentSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Comment", commentSchema);
+const Comment =  mongoose.model("Comment", commentSchema);
+
+export default Comment;

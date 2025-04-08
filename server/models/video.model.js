@@ -62,10 +62,14 @@ const videoSchema = new mongoose.Schema(
         ref: "Comment",
       },
     ],
+    channel:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Channel",
+    }
     // status: {
     //   type: String,
     //   enum: ["pending", "approved", "rejected"],
-    //   default: "pending",
+    //   default: "pending",-
     // },
   },
   {

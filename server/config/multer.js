@@ -72,7 +72,7 @@ export const uploadChannelImage = multer({storage: channelStorage, fileFilter: f
 
 // ------------------------------------------ Video Handling -----------------------------------------
 // Allowed MIME types
-const videoMimeTypes = ["video/mp4", "video/x-matroska", "video/webm", "video/avi"];
+const videoMimeTypes = ["video/mp4", "video/x-matroska", "video/mkv", "video/webm", "video/avi"];
 const imageMimeTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
 
 // Unified disk storage with dynamic folder selection
@@ -112,6 +112,9 @@ const mediaFileFilter = (req, file, cb) => {
 // Multer middleware
 export const uploadVideoFiles = multer({
   storage: mediaStorage,
+  limits: {
+    fileSize: 1000 * 1000 * 500, // 500MB limit
+  },
   fileFilter: mediaFileFilter,
 }).fields([
   { name: "video", maxCount: 1 },
